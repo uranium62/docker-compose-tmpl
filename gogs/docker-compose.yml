@@ -1,0 +1,20 @@
+git_server: 
+  container_name: git_server
+  image: gogs/gogs
+  links: 
+    #bug https://github.com/gogits/gogs/issues/1851
+    - "postgres:db"
+  ports: 
+    - "3000:3000"
+    - "10022:22"
+  restart: always
+
+postgres: 
+  container_name: postgres
+  image: postgres:9.4
+  environment: 
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=gt48f932
+  ports: 
+    - "5432:5432"
+  restart: always
